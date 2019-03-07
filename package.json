@@ -1,0 +1,15 @@
+{
+  "name": "haikufriday",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mitchellbusby/haikufriday.git",
+  "author": "Mitchell Busby <mitchbusby@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.11.0"
+  },
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  }
+}
