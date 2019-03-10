@@ -1,7 +1,6 @@
 import syllable from 'syllable';
 import randomWords from 'random-words';
 
-
 const getHaiku = (): string[] => {
     // Get 5
     const firstLine = getSingleHaikuLine(5);
@@ -19,9 +18,9 @@ const getSingleHaikuLine = (syllableCount: number): string[] => {
 
     while (syllablesConsumed < syllableCount) {
         let syllablesLeft = syllableCount - syllablesConsumed;
-        const nextWord = randomWords();
+        const nextWord: string = randomWords();
 
-        const syllableCountOfNextWord = syllable(nextWord);
+        const syllableCountOfNextWord: number = syllable(nextWord);
         if (syllableCountOfNextWord <= syllablesLeft) {
             syllablesConsumed = syllablesConsumed + syllableCountOfNextWord;
             line.push(nextWord);
