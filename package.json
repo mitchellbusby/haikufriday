@@ -6,10 +6,22 @@
   "author": "Mitchell Busby <mitchbusby@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.11.0"
+    "@babel/core": "^7.3.4",
+    "babel-jest": "^24.3.1",
+    "jest": "^24.3.1",
+    "parcel-bundler": "^1.11.0",
+    "typescript": "^3.3.3333"
   },
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.11",
+    "random-words": "^1.1.0",
+    "syllable": "^3.4.0"
   }
 }
