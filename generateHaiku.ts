@@ -2,7 +2,7 @@ import syllable from 'syllable';
 import randomWords from 'random-words';
 
 
-const getHaiku = (): string => {
+const getHaiku = (): string[] => {
     // Get 5
     const firstLine = getSingleHaikuLine(5);
     // Get 7
@@ -10,7 +10,7 @@ const getHaiku = (): string => {
     // Get 5
     const thirdLine = getSingleHaikuLine(5);
 
-    return [firstLine, secondLine, thirdLine].map(line => line.join(' ')).reduce((prev, next) => prev + '\n' + next, '');
+    return [firstLine, secondLine, thirdLine].map(line => line.join(' '));
 }
 
 const getSingleHaikuLine = (syllableCount: number): string[] => {
