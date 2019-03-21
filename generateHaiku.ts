@@ -32,24 +32,34 @@ const getWordModel = async (): Promise<WordModel> => {
     return wordModel;
 }
 
+const takeLast = (li: any[]) => li[li.length - 1];
+
 const getHaiku = async (): Promise<string[]> => {
     const wordModel = await getWordModel();
 
     // Get 5
     const firstLine = getSingleHaikuLine(wordModel, 5);
     // Get 7
-    const secondLine = getSingleHaikuLine(wordModel, 7);
+    const secondLine = getSingleHaikuLine(wordModel, 7, takeLast(firstLine));
     // Get 5
-    const thirdLine = getSingleHaikuLine(wordModel, 5);
+    const thirdLine = getSingleHaikuLine(wordModel, 5, takeLast(secondLine));
 
     return [firstLine, secondLine, thirdLine].map(line => line.join(' '));
 }
 
-const getSingleHaikuLine = (wordModel: WordModel, syllableCount: number): string[] => {
-    let nextWord = rwd(Object.keys(wordModel).map(word => ({id: word, weight: 1})));
-    let line = [nextWord];
+const getSingleHaikuLine = (wordModel: WordModel, syllableCount: number, ivWord: string|null = null): string[] => {
+    let nextWord: string;
+    let line = [];
+    let syllablesConsumed = 0;
 
-    let syllablesConsumed = syllable(nextWord);
+    if (!ivWord) {
+        nextWord = rwd(Object.keys(wordModel).map(word => ({id: word, weight: 1})));
+        line.push(nextWord);
+        syllablesConsumed = syllable(nextWord);
+    }
+    else {
+        nextWord = ivWord;
+    } 
 
     while (syllablesConsumed < syllableCount) {
         let syllablesLeft = syllableCount - syllablesConsumed;
